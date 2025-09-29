@@ -5,61 +5,310 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>About Me — HidekoMatsuo</title>
 <style>
-body {
-  margin: 0; padding: 0;
-  font-family: sans-serif;
-  color: white; text-align: center;
-  min-height: 100vh;
-  background: url('https://media.discordapp.net/attachments/711177535232147459/1420330439880736900/image.png') no-repeat center center fixed;
-  background-size: cover; position: relative;
+:root {
+  --header-bg-dark: #1a0033;
+  --header-bg-light: #ffffff;
+  --text-dark: white;
+  --text-light: black;
+  --button-hover-light: #4B0082;
+  --burger-dark: white;
+  --burger-light: #2a0055;
 }
-body::before { content: ""; position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.6); z-index:-1; }
 
-/* 🔹 Шапка */
+/* Общие стили */
+body {
+  margin:0; padding:0;
+  font-family:sans-serif;
+  color: var(--text-dark);
+  min-height:100vh;
+  position: relative;
+  transition: color 0.4s ease;
+  background: none;
+}
+body.light { color: var(--text-light); }
+
+/* Фон */
+body::before {
+  content:"";
+  position: fixed;
+  top:0; left:0; width:100%; height:100%;
+  background: url('https://pbs.twimg.com/media/G1r_vxMW0AAUHkk?format=png&name=large') center/cover no-repeat;
+  z-index: -3;
+  transition: background 0.4s ease;
+}
+body.light::before {
+  background: url('https://pbs.twimg.com/media/G1r_vxMW0AAUHkk?format=png&name=medium') center/cover no-repeat;
+}
+
+/* Кавер для темы */
+#themeCover {
+  position: fixed;
+  top:0; left:0; width:100%; height:100%;
+  background: rgba(0,0,0,0.6);
+  z-index: -2;
+  pointer-events: none;
+  transition: background 0.4s ease;
+}
+body.light #themeCover { background: rgba(255,255,255,0.4); }
+
+/* Кавер для меню */
+#menuCover {
+  position: fixed;
+  top:0; left:0; width:100%; height:100%;
+  background: rgba(0,0,0,0.6);
+  z-index: 1400;
+  opacity:0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+#menuCover.active { opacity:1; pointer-events:auto; }
+
+/* Шапка */
 header {
   position: fixed; top:0; left:0; width:100%;
-  display:flex; justify-content:flex-start; align-items:center;
-  background: rgba(0,0,0,0.7);
-  padding: 15px 20px; z-index:1000; flex-wrap:wrap;
+  display:flex; align-items:center;
+  background: var(--header-bg-dark);
+  padding:15px 20px; flex-wrap:wrap;
+  transition: background 0.4s ease, box-shadow 0.4s ease;
+  z-index:2000;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
-header h1 { margin:0; font-size:30px; font-weight:bold; margin-right:40px; }
-nav { display:flex; gap:10px; flex-wrap:wrap; }
-nav a {
+body.light header { background: var(--header-bg-light); box-shadow: 0 2px 6px rgba(0,0,0,0.05); }
+
+header h1 { margin:0; font-size:30px; font-weight:bold; margin-right:20px; transition: color 0.4s ease; }
+body.light header h1 { color: var(--text-light); }
+
+.nav-links { display:flex; gap:10px; flex-wrap:wrap; }
+.nav-links a {
   color:white; text-decoration:none; font-weight:bold;
   padding:8px 12px; border-radius:8px;
-  transition: background 0.3s, color 0.3s;
+  transition: background 0.4s ease, color 0.4s ease;
 }
-nav a:hover { background:white; color:black; }
+body.light .nav-links a { color: var(--burger-light); }
+.nav-links a:hover { background:#4B0082; color:white; } 
+body.light .nav-links a:hover { background: var(--button-hover-light); color:white; }
 
-main { max-width:1000px; margin:0 auto; padding:120px 20px 80px; }
-main img { display:block; margin:20px auto; max-width:80%; border-radius:10px; }
+/* Бургер */
+.burger {
+  display:flex; flex-direction:column; justify-content:space-between;
+  width:30px; height:22px; cursor:pointer;
+  margin-right:15px; order:-1;
+  z-index:2500;
+}
+.burger div {
+  height:3px; border-radius:2px;
+  transition: all 0.3s ease;
+  background: var(--burger-dark);
+}
+body.light .burger div { background: var(--burger-light); }
+.burger.active div:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+.burger.active div:nth-child(2) { opacity:0; }
+.burger.active div:nth-child(3) { transform: rotate(-45deg) translate(6px,-6px); }
 
-.social-buttons { display:flex; justify-content:center; gap:20px; margin:40px 0; }
-.social-buttons a { width:50px; height:50px; border-radius:50%; background:rgba(255,255,255,0.1); display:flex; align-items:center; justify-content:center; transition:background 0.3s; }
-.social-buttons a:hover { background:rgba(255,255,255,0.3); }
-.social-buttons img { width:24px; height:24px; }
+/* Сайд-меню */
+.side-menu {
+  position: fixed; top:0; left:-100%; width:260px; height:100%;
+  background: var(--header-bg-dark); 
+  display:flex; flex-direction:column; padding:60px 20px;
+  transition: left 0.4s ease, background 0.4s ease;
+  z-index:1500;
+  pointer-events:none;
+  box-shadow: 2px 0 6px rgba(0,0,0,0.2);
+}
+.side-menu.active { left:0; pointer-events:auto; }
+body.light .side-menu { background: var(--header-bg-light); }
+
+.side-menu a {
+  margin:10px 0; text-decoration:none;
+  padding:8px 12px; border-radius:8px;
+  transition: background 0.4s ease, color 0.4s ease;
+  color:white;
+  font-weight: 700;
+  font-size: 18px;
+}
+.side-menu a:hover {
+  background:#4B0082; 
+  color:white; 
+}
+body.light .side-menu a { color:#2b0033; }
+body.light .side-menu a:hover { background:#4B0082; color:white; }
+
+/* Слайдер темы */
+.theme-switch {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  margin-left: 13px; /* выравнивание с кнопками */
+  font-weight: 700;
+  font-size: 18px;
+  color: white;
+}
+body.light .theme-switch { color:#2b0033; }
+
+.switch-slider {
+  width:50px; height:24px; border-radius:12px;
+  margin-left:10px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.3);
+  position: relative;
+  display:flex; align-items:center; justify-content:flex-start;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+  transition: background 0.4s ease, border 0.4s ease, box-shadow 0.4s ease;
+}
+body.light .switch-slider {
+  background: rgba(0,0,0,0.05);
+  border: 1px solid rgba(0,0,0,0.2);
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+  border-radius:12px;
+}
+
+.switch-slider img {
+  width:18px; height:18px;
+  border-radius:50%; /* кружок */
+  position:absolute; left:3px;
+  transition: left 0.4s ease, transform 0.4s ease;
+  opacity:0.7;
+}
+body.light .switch-slider img { left:27px; transform: rotate(360deg); }
+
+/* Контент */
+main { max-width:1000px; margin:0 auto; padding:120px 20px 80px; text-align:center; }
+
+/* Соц. кнопки */
+.social-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 40px 0;
+}
+.social-buttons a {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.05);
+  transition: background 0.3s, filter 0.3s;
+}
+.social-buttons a:hover {
+  background: rgba(255,255,255,0.3);
+}
+.social-buttons img {
+  width: 24px;
+  height: 24px;
+  filter: brightness(1) saturate(0.5);
+  transition: filter 0.3s;
+}
+body:not(.light) .social-buttons img { filter: brightness(1) saturate(0); }
+body:not(.light) .social-buttons a:hover img { filter: brightness(1) saturate(5); }
+body.light .social-buttons a { background: rgba(0,0,0,0.05); }
+body.light .social-buttons a:hover { background: rgba(0,0,0,0.2); }
+body.light .social-buttons img { filter: brightness(0.7) saturate(0.5); }
+body.light .social-buttons a:hover img { filter: brightness(1) saturate(5); }
+
+/* Responsive: hide nav-links on mobile, show burger */
+@media (max-width: 700px) {
+  .nav-links {
+    display: none;
+  }
+  .nav-links.active {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background: var(--header-bg-dark);
+    z-index: 2100;
+  }
+  body.light .nav-links.active {
+    background: var(--header-bg-light);
+  }
+  .burger {
+    display: flex;
+  }
+}
+@media (min-width: 701px) {
+  .nav-links {
+    display: flex !important;
+  }
+  .side-menu {
+    display: none;
+  }
+  .burger {
+    display: none;
+  }
+}
 </style>
 </head>
 <body>
+
+<div id="themeCover"></div>
+<div id="menuCover"></div>
+
 <header>
+  <div class="burger" id="burger"><div></div><div></div><div></div></div>
   <h1>HidekoMatsuo</h1>
-  <nav>
+  <div class="nav-links" id="navLinks">
     <a href="index.html">About me</a>
     <a href="gallery.html">Art examples</a>
     <a href="pricelist.html">Pricelist</a>
     <a href="contact.html">Contact me</a>
-  </nav>
+  </div>
 </header>
+
+<div class="side-menu" id="sideMenu">
+  <a href="index.html">About me</a>
+  <a href="gallery.html">Art examples</a>
+  <a href="pricelist.html">Pricelist</a>
+  <a href="contact.html">Contact me</a>
+  <div class="theme-switch" id="themeSwitch">
+    Theme
+    <div class="switch-slider">
+      <img src="https://img.icons8.com/ios-filled/50/0000ff/moon-symbol.png"/>
+    </div>
+  </div>
+</div>
+
 <main>
-  <h2>About me</h2>
-  <p>Hi! I’m Hideko Matsuo — an artist and Vtuber who loves drawing, colors, and creative projects. ✨  
-     I take commissions and enjoy exploring different styles. Please credit me if you share my work — it means a lot. 💖</p>
-  <img src="https://media.discordapp.net/attachments/957380529198612510/1382663261689876510/Untitled10_20250611190614.png" alt="Main artwork" />
+  <h2>About Me</h2>
+  <p>Welcome to my digital art portfolio. I am Hideko Matsuo, and I specialize in traditional and digital illustrations.</p>
+
   <div class="social-buttons">
-    <a href="https://t.me/yourusername" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram" /></a>
-    <a href="https://discord.com/users/yourusername" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" alt="Discord" /></a>
-    <a href="mailto:email@example.com"><img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Gmail" /></a>
+    <a href="#" title="Telegram"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png"/></a>
+    <a href="#" title="Discord"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png"/></a>
+    <a href="#" title="Instagram"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png"/></a>
+    <a href="mailto:email@example.com" title="Gmail"><img src="https://cdn-icons-png.flaticon.com/512/732/732200.png"/></a>
+    <a href="https://ko-fi.com/yourusername" title="Ko-fi"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968885.png"/></a>
   </div>
 </main>
+
+<script>
+const burger = document.getElementById('burger');
+const sideMenu = document.getElementById('sideMenu');
+const navLinks = document.getElementById('navLinks');
+const menuCover = document.getElementById('menuCover');
+const themeSwitch = document.getElementById('themeSwitch');
+
+// Бургер меню
+function toggleMenu(){
+  const active = sideMenu.classList.toggle('active');
+  burger.classList.toggle('active', active);
+  menuCover.classList.toggle('active', active);
+}
+burger.addEventListener('click', toggleMenu);
+menuCover.addEventListener('click', toggleMenu);
+
+// Переключатель темы
+themeSwitch.addEventListener('click', ()=>{
+  document.body.classList.toggle('light');
+  const img = themeSwitch.querySelector('img');
+  img.src = document.body.classList.contains('light')
+    ? "https://img.icons8.com/ios-filled/50/FFD700/sun--v1.png"
+    : "https://img.icons8.com/ios-filled/50/0000ff/moon-symbol.png";
+});
+</script>
+
 </body>
 </html>
