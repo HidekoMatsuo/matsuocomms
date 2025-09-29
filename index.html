@@ -206,40 +206,6 @@ body.light .social-buttons a { background: rgba(0,0,0,0.05); }
 body.light .social-buttons a:hover { background: rgba(0,0,0,0.2); }
 body.light .social-buttons img { filter: brightness(0.7) saturate(0.5); }
 body.light .social-buttons a:hover img { filter: brightness(1) saturate(5); }
-
-/* Responsive: hide nav-links on mobile, show burger */
-@media (max-width: 700px) {
-  .nav-links {
-    display: none;
-  }
-  .nav-links.active {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    width: 100%;
-    background: var(--header-bg-dark);
-    z-index: 2100;
-  }
-  body.light .nav-links.active {
-    background: var(--header-bg-light);
-  }
-  .burger {
-    display: flex;
-  }
-}
-@media (min-width: 701px) {
-  .nav-links {
-    display: flex !important;
-  }
-  .side-menu {
-    display: none;
-  }
-  .burger {
-    display: none;
-  }
-}
 </style>
 </head>
 <body>
@@ -296,6 +262,7 @@ function toggleMenu(){
   const active = sideMenu.classList.toggle('active');
   burger.classList.toggle('active', active);
   menuCover.classList.toggle('active', active);
+  navLinks.style.display = active ? 'none' : 'flex';
 }
 burger.addEventListener('click', toggleMenu);
 menuCover.addEventListener('click', toggleMenu);
