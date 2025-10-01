@@ -14,7 +14,7 @@
   --burger-light: #2a0055;
 }
 
-/* Общие стили */
+/* загальні стилі */
 body {
   margin:0; padding:0;
   font-family:sans-serif;
@@ -39,7 +39,7 @@ body.light::before {
   background: url('https://pbs.twimg.com/media/G1r_vxMW0AAUHkk?format=png&name=medium') center/cover no-repeat;
 }
 
-/* Кавер темы и меню */
+/* Кавер теми та менюшки */
 #themeCover {
   position: fixed; top:0; left:0; width:100%; height:100%;
   background: rgba(0,0,0,0.6);
@@ -101,7 +101,7 @@ body.light .burger div { background: var(--burger-light); }
 .burger.active div:nth-child(2) { opacity:0; }
 .burger.active div:nth-child(3) { transform: rotate(-45deg) translate(6px,-6px); }
 
-/* Сайд-меню */
+/*бокова менюшка*/
 .side-menu {
   position: fixed; top:0; left:-100%; width:260px; height:100%;
   background: var(--header-bg-dark); 
@@ -126,7 +126,7 @@ body.light .side-menu { background: var(--header-bg-light); }
 body.light .side-menu a { color:#2b0033; }
 body.light .side-menu a:hover { background:#D580FF; color:white; }
 
-/* Слайдер темы */
+/* Слайдер */
 .theme-switch {
   display: flex;
   align-items: center;
@@ -167,7 +167,7 @@ main { max-width:1000px; margin:0 auto; padding:120px 20px 80px; }
 .pricelist-images { display:flex; justify-content:center; gap:20px; flex-wrap:wrap; margin-top:20px; }
 .pricelist-images img { width:250px; height:auto; border-radius:10px; background:rgba(255,255,255,0.1); padding:5px; }
 
-/* Соц. кнопки с подсветкой */
+/* Соц. кнопки */
 .social-buttons {
   display: flex;
   justify-content: center;
@@ -256,7 +256,7 @@ function toggleMenu(){
 burger.addEventListener('click', toggleMenu);
 menuCover.addEventListener('click', toggleMenu);
 
-// Переключатель темы
+// Переключатель тем
 themeSwitch.addEventListener('click', ()=>{
   document.body.classList.toggle('light');
   const img = themeSwitch.querySelector('img');
