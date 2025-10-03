@@ -206,6 +206,90 @@ body.light .social-buttons a { background: rgba(0,0,0,0.05); }
 body.light .social-buttons a:hover { background: rgba(0,0,0,0.2); }
 body.light .social-buttons img { filter: brightness(0.7) saturate(0.5); }
 body.light .social-buttons a:hover img { filter: brightness(1) saturate(5); }
+
+/* ======= MOBILE ADAPTATION ======= */
+@media (max-width: 700px) {
+  header {
+    padding: 12px 10px;
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+  header h1 {
+    font-size: 22px;
+    margin-right: 10px;
+  }
+  .nav-links {
+    display: none;
+  }
+  .burger {
+    display: flex;
+    margin-right: 10px;
+  }
+  .side-menu {
+    width: 80vw;
+    min-width: 180px;
+    padding: 60px 10px;
+    font-size: 16px;
+  }
+  main {
+    padding: 90px 8px 60px;
+    font-size: 16px;
+    text-align: left;
+  }
+  main img {
+    width: 110px !important;
+    border-radius: 12px !important;
+  }
+  .social-buttons {
+    gap: 12px;
+    margin: 30px 0;
+  }
+  .social-buttons a {
+    width: 40px;
+    height: 40px;
+  }
+  .social-buttons img {
+    width: 20px;
+    height: 20px;
+  }
+  .theme-switch {
+    font-size: 16px;
+    margin-top: 8px;
+    margin-left: 0;
+  }
+  .switch-slider {
+    width: 40px;
+    height: 20px;
+    margin-left: 8px;
+  }
+  .switch-slider img {
+    width: 15px;
+    height: 15px;
+    left: 2px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+  }
+  body.light .switch-slider img {
+    left: 20px;
+    background: rgba(0,0,0,0.07);
+  }
+  main > div[style*="display: flex"] {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 10px !important;
+  }
+  main > div[style*="display: flex"] p {
+    margin: 0 !important;
+    font-size: 15px !important;
+    text-align: center !important;
+  }
+}
+/* ======= END MOBILE ADAPTATION ======= */
+
+/* Hide nav-links when side menu is open */
+.hide-nav {
+  display: none !important;
+}
 </style>
 </head>
 <body>
@@ -274,7 +358,7 @@ function toggleMenu(){
   const active = sideMenu.classList.toggle('active');
   burger.classList.toggle('active', active);
   menuCover.classList.toggle('active', active);
-  navLinks.style.display = active ? 'none' : 'flex';
+  navLinks.classList.toggle('hide-nav', active);
 }
 burger.addEventListener('click', toggleMenu);
 menuCover.addEventListener('click', toggleMenu);
@@ -286,6 +370,16 @@ themeSwitch.addEventListener('click', ()=>{
   img.src = document.body.classList.contains('light')
     ? "https://img.icons8.com/ios-filled/50/FFD700/sun--v1.png"
     : "https://img.icons8.com/ios-filled/50/0000ff/moon-symbol.png";
+});
+
+// Сховати меню при натисканні на посилання (мобільні)
+document.querySelectorAll('.side-menu a').forEach(link => {
+  link.addEventListener('click', () => {
+    sideMenu.classList.remove('active');
+    burger.classList.remove('active');
+    menuCover.classList.remove('active');
+    navLinks.classList.remove('hide-nav');
+  });
 });
 </script>
 
