@@ -151,6 +151,21 @@ body.light .switch-slider img {
 
 main { max-width:1000px; margin:0 auto; padding:120px 20px 80px; }
 
+/* Contact form styles */
+#formMessage {
+  max-width:500px; margin:18px auto; padding:12px 14px; border-radius:8px; display:none; text-align:center; font-weight:600;
+}
+#formMessage.success { display:block; background: rgba(75,0,130,0.12); color:#F6F3FF; border:1px solid rgba(75,0,130,0.22); }
+#formMessage.error { display:block; background: rgba(255,0,0,0.06); color:#FFD6D6; border:1px solid rgba(255,0,0,0.12); }
+form#contactForm input, form#contactForm textarea {
+  padding:12px; border-radius:8px; border:1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.02); color: inherit; font-size:16px;
+}
+form#contactForm input::placeholder, form#contactForm textarea::placeholder { color: rgba(255,255,255,0.55); }
+form#contactForm input:focus, form#contactForm textarea:focus { outline:none; border-color:#D580FF; box-shadow:0 0 0 6px rgba(213,128,255,0.06); }
+form#contactForm button { padding:12px; border:none; border-radius:8px; background:#4B0082; color:white; font-weight:700; cursor:pointer; transition:transform 0.12s ease; }
+form#contactForm button:hover { transform: translateY(-2px); }
+
 .social-buttons {
   display: flex;
   flex-direction: column;
@@ -197,7 +212,7 @@ main { max-width:1000px; margin:0 auto; padding:120px 20px 80px; }
 
 .social-buttons a.telegram:hover { background: #0088cc; color: white; }
 .social-buttons a.discord:hover { background: #7289da; color: white; }
-.social-buttons a.instagram:hover { background: linear-gradient(45deg, #feda75, #d62976, #4f5bd5); color: white; }
+.social-buttons a.instagram:hover { background: linear-gradient(45deg, #fdcd48, #e71573, #4c5af1); color: white; }
 .social-buttons a.gmail:hover { background: #ea4335; color: white; }
 .social-buttons a.kofi:hover { background: #29abe0; color: white; }
 
@@ -224,8 +239,6 @@ main { max-width:1000px; margin:0 auto; padding:120px 20px 80px; }
   header h1 { font-size: 22px; }
   .burger { height: 32px; width: 32px; }
 }
-
-/* Extra mobile tweaks for very small screens */
 @media (max-width:480px) {
   header { padding: 8px 4px; }
   main { padding: 70px 2vw 30px; }
@@ -237,8 +250,6 @@ main { max-width:1000px; margin:0 auto; padding:120px 20px 80px; }
   .social-buttons a .logo img { width: 14px; height: 14px; }
   header h1 { font-size: 16px; }
 }
-
-/* Ensure pointer-events for side-menu when active */
 .side-menu {
   pointer-events: none;
 }
@@ -246,8 +257,6 @@ main { max-width:1000px; margin:0 auto; padding:120px 20px 80px; }
   left:0;
   pointer-events:auto;
 }
-
-/* Style for close button */
 .side-menu #closeMenuBtn {
   position: absolute;
   top: 18px;
@@ -277,8 +286,8 @@ body.menu-open .nav-links {
   display: none !important;
 }
 body.menu-open .burger {
-  opacity: 0.85;      /* slightly dim, but still visible */
-  pointer-events: auto; /* allow clicks on the animated cross */
+  opacity: 0.85;
+  pointer-events: auto;
   cursor: pointer;
 }
 </style>
@@ -294,7 +303,7 @@ body.menu-open .burger {
   <div class="nav-links" id="navLinks">
     <a href="index.html">About me</a>
     <a href="gallery.html">Art examples</a>
-    <a href="pricelist.html">Pricelist</a>
+<a href="pricelist.html">Pricelist / Commissions</a>
     <a href="contact.html">Contact me</a>
   </div>
 </header>
@@ -302,7 +311,7 @@ body.menu-open .burger {
 <div class="side-menu" id="sideMenu">
   <a href="index.html">About me</a>
   <a href="gallery.html">Art examples</a>
-  <a href="pricelist.html">Pricelist</a>
+<a href="pricelist.html">Pricelist / Commissions</a>
   <a href="contact.html">Contact me</a>
   <div class="theme-switch" id="themeSwitch">
     Theme
@@ -336,6 +345,22 @@ body.menu-open .burger {
       <span class="text">Ko-fi</span>
     </a>
   </div>
+
+  <h2>Send me a message</h2>
+
+  <div id="formMessage" aria-live="polite"></div>
+
+  <form id="contactForm" action="send_mail.php" method="post" style="max-width:500px;margin:auto;display:flex;flex-direction:column;gap:12px;">
+    <input type="text" name="name" placeholder="Your name" required>
+    <input type="email" name="email" placeholder="Your email" required>
+    <textarea name="message" placeholder="Your message" rows="5" required></textarea>
+
+    <button type="submit" style="padding:10px;border:none;border-radius:8px;
+      background:#4B0082;color:white;font-weight:bold;cursor:pointer;">
+      Send message
+    </button>
+  </form>
+
 </main>
 
 <script>
@@ -379,6 +404,40 @@ themeSwitch.addEventListener('click', ()=>{
 document.querySelectorAll('.side-menu a').forEach(link => {
   link.addEventListener('click', closeMenu);
 });
+
+// Client-side validation for contact form
+const contactForm = document.getElementById('contactForm');
+if (contactForm) {
+  contactForm.addEventListener('submit', (e) => {
+    const name = contactForm.querySelector('input[name="name"]').value.trim();
+    const email = contactForm.querySelector('input[name="email"]').value.trim();
+    const message = contactForm.querySelector('textarea[name="message"]').value.trim();
+    const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!name || !emailRe.test(email) || message.length < 5) {
+      e.preventDefault();
+      alert('Please enter a valid name, email, and a message of at least 5 characters.');
+      return false;
+    }
+    // allow submit
+  });
+}
+
+// Show server response (sent=1 or sent=0) and clear query param
+(function(){
+  const params = new URLSearchParams(window.location.search);
+  if (!params.has('sent')) return;
+  const box = document.getElementById('formMessage');
+  if (!box) return;
+  if (params.get('sent') === '1') {
+    box.textContent = 'Message sent — thank you!';
+    box.className = 'success';
+  } else {
+    box.textContent = 'Failed to send message. Please try again later.';
+    box.className = 'error';
+  }
+  // remove query for cleanliness
+  window.history.replaceState({}, document.title, window.location.pathname);
+})();
 </script>
 
 </body>
