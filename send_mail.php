@@ -25,7 +25,7 @@ if (preg_match('/[\r\n]/', $name) || preg_match('/[\r\n]/', $email)) {
   exit;
 }
 
-$to = 'recipient@example.com'; // <<-- REPLACE with your email
+$to = 'hidekomiyach@gmail.com'; // <<-- REPLACE with your email
 $subject = "Contact form: " . $name;
 $body = "Name: $name\nEmail: $email\n\nMessage:\n$message\n";
 $headers = "From: $name <$email>\r\n" .
@@ -41,4 +41,5 @@ if ($sent) {
   header('Location: contact.html?sent=0');
   exit;
 }
+
 ?>
