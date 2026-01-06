@@ -1,0 +1,45 @@
+Specify which type of commission you want: Chibi, Furry, or Anime
+Choose the view: Full Body, Waist Up, or Shoulders Up
+Decide on pose type: Dynamic (action) or Static (calm)
+Specify background: With Background or No Background (transparent) or plain background
+For Full Body: Describe the entire character's pose and stance
+For Waist Up: Focus on upper body pose and hand positions
+For Shoulders Up: Emphasize facial expression and hair details
+For Dynamic poses: Describe the action or movement
+For Static poses: Specify the character's posture and mood
+With Background: Describe the scene, colors, and atmosphere
+No Background: Request transparent PNG for your own use
+Provide clear character references - front and side views help
+Specify hair color, style, and length
+Describe eye color and shape
+Mention clothing details and accessories
+For Chibi: Choose pose or amount of details
+For Furry: Provide animal species and fur pattern references
+For Anime: Share examples of anime styles you like
+Indicate character's gender and approximate age
+Describe personality to influence expression
+Specify any weapons, props, or items held
+Mention color preferences or palette restrictions
+For Dynamic poses: Consider balance and composition
+For Static poses: Focus on character presence and expression
+With Background: Simple gradient, detailed scene, or pattern?
+No Background: Perfect for overlays or custom backgrounds
+Full Body + Dynamic: Great for action scenes
+Waist Up + Static: Ideal for character portraits
+Shoulders Up: Best for expressive close-ups
+Provide multiple reference images if available
+Specify if character is original or from existing media
+Mention final use: personal, streaming, commercial
+For Chibi: Decide on super-detailed or slightly detailed
+For Furry: pick Kemono or Toony
+For Anime: Typical anime proportions and features
+Be specific about what you want in the background
+Consider how you'll use the artwork (profile pic, print, etc.)
+Provide feedback during sketch stage for adjustments
+Understand that complex elements may affect timeline
+Enjoy the process of seeing your character come to life!
+Specify file format: PNG recommended for transparency
+Keep all communication organized in one place
+Be clear about deadlines if you have a specific date
+Trust the artist's expertise in their style
+Respond promptly to progress updates
