@@ -381,6 +381,7 @@ body.menu-open .burger {
     <a href="index.html">About me</a>
     <a href="gallery.html">Art examples</a>
     <a href="pricelist.html">Pricelist / Commissions</a>
+    <a href="api-data.php">Character Gallery</a>
     <a href="contact.html">Contact me</a>
   </div>
 </header>
@@ -389,6 +390,7 @@ body.menu-open .burger {
   <a href="index.html">About me</a>
   <a href="gallery.html">Art examples</a>
   <a href="pricelist.html">Pricelist / Commissions</a>
+  <a href="api-data.php" >Character Gallery</a>
   <a href="contact.html">Contact me</a>
   <div class="theme-switch" id="themeSwitch">
     Theme
@@ -486,8 +488,6 @@ themeSwitch.addEventListener('click', ()=>{
 document.querySelectorAll('.side-menu a').forEach(link => {
   link.addEventListener('click', closeMenu);
 });
-
-// ========== ДОБАВЛЕН КОД ДЛЯ СОВЕТОВ ==========
 const tipContainer = document.getElementById('tipContainer');
 const loadTipBtn = document.getElementById('loadTipBtn');
 let currentTipIndex = 0;

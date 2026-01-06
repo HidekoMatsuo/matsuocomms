@@ -170,8 +170,6 @@ body.light .social-buttons a:hover img { filter: brightness(1) saturate(5); }
     background: rgba(0,0,0,0.07);
   }
 }
-
-/* Hide nav-links when side menu is open */
 .hide-nav {
   display: none !important;
 }
@@ -180,31 +178,30 @@ body.light .social-buttons a:hover img { filter: brightness(1) saturate(5); }
 <body>
 <div id="themeCover"></div>
 <div id="menuCover"></div>
-
 <header>
-  <div class="burger" id="burger"><div></div><div></div><div></div></div>
-  <h1>HidekoMatsuo</h1>
-  <div class="nav-links" id="navLinks">
-    <a href="index.html">About me</a> 
-    <a href="gallery.html">Art examples</a>
-    <a href="pricelist.html">Pricelist</a>
-    <a href="contact.html">Contact me</a>
-  </div>
-</header>
-
-<div class="side-menu" id="sideMenu">
-  <a href="index.html">About me</a>
-  <a href="gallery.html">Art examples</a>
-  <a href="pricelist.html">Pricelist</a>
-  <a href="contact.html">Contact me</a>
-  <div class="theme-switch" id="themeSwitch">
-    Theme
-    <div class="switch-slider">
-      <img src="https://img.icons8.com/ios-filled/50/0000ff/moon-symbol.png"/>
-    </div>
-  </div>
+<div class="burger" id="burger"><div></div><div></div><div></div></div>
+<h1>HidekoMatsuo</h1>
+<div class="nav-links" id="navLinks">
+<a href="index.html">About me</a> 
+<a href="gallery.html">Art examples</a>
+<a href="pricelist.html">Pricelist / Commissions</a>
+<a href="api-data.php">Character Gallery</a>
+<a href="contact.html">Contact me</a>
 </div>
-
+</header>
+<div class="side-menu" id="sideMenu">
+<a href="index.html">About me</a>
+<a href="gallery.html">Art examples</a>
+<a href="pricelist.html">Pricelist / Commissions</a>
+<a href="api-data.php">Character Gallery</a>
+<a href="contact.html">Contact me</a>
+<div class="theme-switch" id="themeSwitch">
+Theme
+<div class="switch-slider">
+<img src="https://img.icons8.com/ios-filled/50/0000ff/moon-symbol.png"/>
+</div>
+</div>
+</div>
 <div class="gallery-title">Art Examples</div>
 <section class="gallery" id="gallery1">
   <img src="https://pbs.twimg.com/media/GusJEwZW4AAB05V?format=jpg&name=4096x4096">
@@ -220,7 +217,6 @@ body.light .social-buttons a:hover img { filter: brightness(1) saturate(5); }
   <img src="https://pbs.twimg.com/media/GWWpU0mWMAAVkbF?format=jpg&name=4096x4096">
   <img src="https://pbs.twimg.com/media/GUGF9ThXsAAPsru?format=jpg&name=medium">
 </section>
-
 <div class="divider">Traditional Arts</div>
 <section class="gallery" id="gallery2">
   <img src="https://pbs.twimg.com/media/GXrqu-2XIAAeNzY?format=jpg&name=medium">
@@ -231,18 +227,16 @@ body.light .social-buttons a:hover img { filter: brightness(1) saturate(5); }
   <img src="https://pbs.twimg.com/media/GKBgrDQXMAAu4Ya?format=jpg&name=large">
 </section>
 
-<!-- Модалки -->
-<div class="modal" id="modal">
-  <div class="modal-content">
-    <img src="">
-    <button class="close-modal" id="closeModal">×</button>
-    <button class="nav-arrow" id="prev">&#10094;</button>
-    <button class="nav-arrow" id="next">&#10095;</button>
-    <div class="zoom-buttons">
-      <button id="zoomIn">+</button>
-      <button id="zoomOut">−</button>
-    </div>
-  </div>
+<div class="modal" id="modal"><div class="modal-content">
+<img src="">
+<button class="close-modal" id="closeModal">×</button>
+<button class="nav-arrow" id="prev">&#10094;</button>
+<button class="nav-arrow" id="next">&#10095;</button>
+<div class="zoom-buttons">
+<button id="zoomIn">+</button>
+<button id="zoomOut">−</button>
+</div>
+</div>
 </div>
 
 <script>
