@@ -13,7 +13,6 @@
   --burger-dark: white;
   --burger-light: black;
 }
-
 body {
   margin:0; padding:0;
   font-family:sans-serif;
@@ -24,7 +23,6 @@ body {
   background: none;
 }
 body.light { color: var(--text-light); }
-
 body::before {
   content:"";
   position: fixed;
@@ -36,7 +34,6 @@ body::before {
 body.light::before {
   background: url('https://pbs.twimg.com/media/G1r_vxMW0AAUHkk?format=png&name=medium') center/cover no-repeat;
 }
-
 #themeCover {
   position: fixed;
   top:0; left:0; width:100%; height:100%;
@@ -46,7 +43,6 @@ body.light::before {
   transition: background 0.4s ease;
 }
 body.light #themeCover { background: rgba(255,255,255,0.4); }
-
 #menuCover {
   position: fixed;
   top:0; left:0; width:100%; height:100%;
@@ -57,7 +53,6 @@ body.light #themeCover { background: rgba(255,255,255,0.4); }
   transition: opacity 0.4s ease;
 }
 #menuCover.active { opacity:1; pointer-events:auto; }
-
 header {
   position: fixed; top:0; left:0; width:100%;
   display:flex; align-items:center;
@@ -68,7 +63,6 @@ header {
   box-shadow: 0 2px 6px rgba(0,0,0,0.3);
 }
 body.light header { background: var(--header-bg-light); }
-
 header h1 { margin:0; font-size:30px; font-weight:bold; margin-right:20px; transition: color 0.4s ease; }
 body.light header h1 { color: var(--text-light); }
 
@@ -81,7 +75,6 @@ body.light header h1 { color: var(--text-light); }
 body.light .nav-links a { color: var(--burger-light); }
 .nav-links a:hover { background:#4B0082; color:white; } 
 body.light .nav-links a:hover { background:#D580FF; color:white; }
-
 .burger {
   display:flex; flex-direction:column; justify-content:space-between;
   width:30px; height:22px; cursor:pointer;
@@ -97,7 +90,6 @@ body.light .burger div { background: var(--burger-light); }
 .burger.active div:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
 .burger.active div:nth-child(2) { opacity:0; }
 .burger.active div:nth-child(3) { transform: rotate(-45deg) translate(6px,-6px); }
-
 .side-menu {
   position: fixed; top:0; left:-100%; width:260px; height:100%;
   background: var(--header-bg-dark); 
@@ -112,7 +104,6 @@ body.light .burger div { background: var(--burger-light); }
   pointer-events:auto;
 }
 body.light .side-menu { background: var(--header-bg-light); }
-
 .side-menu a {
   margin:10px 0; text-decoration:none;
   padding:8px 12px; border-radius:8px;
@@ -148,10 +139,7 @@ body.light .switch-slider img {
   left:27px; transform: rotate(360deg);
   background: rgba(0,0,0,0.07); 
 }
-
 main { max-width:1000px; margin:0 auto; padding:120px 20px 80px; }
-
-/* Contact form styles */
 #formMessage {
   max-width:500px; margin:18px auto; padding:12px 14px; border-radius:8px; display:none; text-align:center; font-weight:600;
 }
@@ -173,7 +161,6 @@ form#contactForm button:hover { transform: translateY(-2px); }
   gap: 20px;
   margin: 40px 0;
 }
-
 .social-buttons a {
   width: 100%;
   max-width: 340px;
@@ -218,6 +205,77 @@ form#contactForm button:hover { transform: translateY(-2px); }
 
 .social-buttons a:hover .logo img { filter: brightness(1) saturate(1); }
 
+.commission-tips {
+  margin: 40px 0;
+  padding: 20px;
+  background: rgba(75,0,130,0.12);
+  border-radius: 12px;
+  border: 1px solid rgba(75,0,130,0.22);
+}
+
+.commission-tips h3 {
+  margin-top: 0;
+  color: #D580FF;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#tipContainer {
+  margin: 15px 0;
+  padding: 15px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 8px;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.tip-number {
+  display: inline-block;
+  background: #4B0082;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+#loadTipBtn {
+  display: block;
+  margin: 10px auto 0;
+  padding: 10px 20px;
+  background: #4B0082;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.12s ease;
+}
+
+#loadTipBtn:hover {
+  transform: translateY(-2px);
+  background: #5a0099;
+}
+
+body.light .commission-tips {
+  background: rgba(213,128,255,0.12);
+  border: 1px solid rgba(213,128,255,0.22);
+}
+
+body.light #tipContainer {
+  background: rgba(0,0,0,0.05);
+}
+
+body.light .tip-number {
+  background: #D580FF;
+}
+
 @media (max-width:700px) {
   main { padding: 90px 5vw 40px; }
   header { padding: 10px 10px; }
@@ -238,6 +296,14 @@ form#contactForm button:hover { transform: translateY(-2px); }
   .social-buttons a .logo img { width: 18px; height: 18px; }
   header h1 { font-size: 22px; }
   .burger { height: 32px; width: 32px; }
+  .commission-tips {
+    padding: 15px;
+    margin: 30px 0;
+  }
+  #tipContainer {
+    padding: 12px;
+    font-size: 15px;
+  }
 }
 @media (max-width:480px) {
   header { padding: 8px 4px; }
@@ -249,6 +315,17 @@ form#contactForm button:hover { transform: translateY(-2px); }
   .social-buttons a .logo { width: 32px; }
   .social-buttons a .logo img { width: 14px; height: 14px; }
   header h1 { font-size: 16px; }
+  .commission-tips h3 {
+    font-size: 18px;
+  }
+  #tipContainer {
+    flex-direction: column;
+    text-align: center;
+  }
+  .tip-number {
+    margin-right: 0;
+    margin-bottom: 8px;
+  }
 }
 .side-menu {
   pointer-events: none;
@@ -303,7 +380,7 @@ body.menu-open .burger {
   <div class="nav-links" id="navLinks">
     <a href="index.html">About me</a>
     <a href="gallery.html">Art examples</a>
-<a href="pricelist.html">Pricelist / Commissions</a>
+    <a href="pricelist.html">Pricelist / Commissions</a>
     <a href="contact.html">Contact me</a>
   </div>
 </header>
@@ -311,7 +388,7 @@ body.menu-open .burger {
 <div class="side-menu" id="sideMenu">
   <a href="index.html">About me</a>
   <a href="gallery.html">Art examples</a>
-<a href="pricelist.html">Pricelist / Commissions</a>
+  <a href="pricelist.html">Pricelist / Commissions</a>
   <a href="contact.html">Contact me</a>
   <div class="theme-switch" id="themeSwitch">
     Theme
@@ -345,12 +422,17 @@ body.menu-open .burger {
       <span class="text">Ko-fi</span>
     </a>
   </div>
-
+  <div class="commission-tips">
+    <h3>💡 Tips for Commissioning Art</h3>
+    <div id="tipContainer">
+      <span class="tip-number">Tip #1</span>
+      Provide clear references to help understand your vision better
+    </div>
+    <button id="loadTipBtn">Show Another Tip</button>
+  </div>
   <h2>Send me a message</h2>
-
   <div id="formMessage" aria-live="polite"></div>
-
-  <form id="contactForm" action="send_mail.php" method="post" style="max-width:500px;margin:auto;display:flex;flex-direction:column;gap:12px;">
+  <form id="contactForm" style="max-width:500px;margin:auto;display:flex;flex-direction:column;gap:12px;">
     <input type="text" name="name" placeholder="Your name" required>
     <input type="email" name="email" placeholder="Your email" required>
     <textarea name="message" placeholder="Your message" rows="5" required></textarea>
@@ -405,39 +487,153 @@ document.querySelectorAll('.side-menu a').forEach(link => {
   link.addEventListener('click', closeMenu);
 });
 
-// Client-side validation for contact form
-const contactForm = document.getElementById('contactForm');
-if (contactForm) {
-  contactForm.addEventListener('submit', (e) => {
-    const name = contactForm.querySelector('input[name="name"]').value.trim();
-    const email = contactForm.querySelector('input[name="email"]').value.trim();
-    const message = contactForm.querySelector('textarea[name="message"]').value.trim();
-    const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!name || !emailRe.test(email) || message.length < 5) {
-      e.preventDefault();
-      alert('Please enter a valid name, email, and a message of at least 5 characters.');
-      return false;
+// ========== ДОБАВЛЕН КОД ДЛЯ СОВЕТОВ ==========
+const tipContainer = document.getElementById('tipContainer');
+const loadTipBtn = document.getElementById('loadTipBtn');
+let currentTipIndex = 0;
+let allTips = [];
+
+function loadCommissionTips() {
+  const xhr = new XMLHttpRequest();
+  
+  xhr.open('GET', 'commission-tips.txt', true);
+  
+  xhr.onload = function() {
+    if (xhr.status === 200) {
+      const tipsText = xhr.responseText;
+      allTips = tipsText.split('\n').filter(tip => tip.trim() !== '');
+      if (allTips.length > 0) {
+        showRandomTip();
+      } else {
+        useDefaultTips();
+      }
+    } else {
+      useDefaultTips();
     }
-    // allow submit
-  });
+  };
+  
+  xhr.onerror = function() {
+    useDefaultTips();
+  };
+  
+  xhr.send();
+}
+function useDefaultTips() {
+  allTips = [
+    "Provide clear references to help understand your vision better",
+    "Specify desired image size and format in advance",
+    "Clearly describe character: personality, pose, emotions",
+    "Set realistic deadlines - quality work takes time",
+    "Discuss budget openly, considering complexity and detail",
+    "Be open to professional advice from the artist",
+    "Specify color palette if you have specific preferences",
+    "Provide information about image usage rights",
+    "Discuss number of revisions at sketch stage",
+    "Prepare all references in one place for convenience"
+  ];
+  showRandomTip();
 }
 
-// Show server response (sent=1 or sent=0) and clear query param
-(function(){
-  const params = new URLSearchParams(window.location.search);
-  if (!params.has('sent')) return;
-  const box = document.getElementById('formMessage');
-  if (!box) return;
-  if (params.get('sent') === '1') {
-    box.textContent = 'Message sent — thank you!';
-    box.className = 'success';
+function showRandomTip() {
+  if (allTips.length === 0) return;
+  
+  let randomIndex;
+  do {
+    randomIndex = Math.floor(Math.random() * allTips.length);
+  } while (randomIndex === currentTipIndex && allTips.length > 1);
+  
+  currentTipIndex = randomIndex;
+  const tip = allTips[randomIndex];
+  tipContainer.innerHTML = `
+    <span class="tip-number">Tip #${randomIndex + 1}</span>
+    ${tip}
+  `;
+}
+window.addEventListener('DOMContentLoaded', loadCommissionTips);
+loadTipBtn.addEventListener('click', () => {
+  if (allTips.length > 0) {
+    showRandomTip();
   } else {
-    box.textContent = 'Failed to send message. Please try again later.';
-    box.className = 'error';
+    loadCommissionTips();
   }
-  // remove query for cleanliness
-  window.history.replaceState({}, document.title, window.location.pathname);
-})();
+});
+setInterval(() => {
+  if (allTips.length > 1) {
+    showRandomTip();
+  }
+}, 15000);
+
+
+const contactForm = document.getElementById('contactForm');
+const formMessage = document.getElementById('formMessage');
+
+if (contactForm) {
+  contactForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const formData = new FormData(this);
+    const name = formData.get('name').trim();
+    const email = formData.get('email').trim();
+    const message = formData.get('message').trim();
+    const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    
+    if (!name || !emailRe.test(email) || message.length < 5) {
+      showFormMessage('Please enter a valid name, email, and a message of at least 5 characters.', 'error');
+      return false;
+    }
+    const submitBtn = contactForm.querySelector('button[type="submit"]');
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = 'Sending...';
+    submitBtn.disabled = true;
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', 'send_mail.php', true);
+  
+    xhr.onload = function() {
+      submitBtn.textContent = originalText;
+      submitBtn.disabled = false;
+      
+      if (xhr.status === 200) {
+        try {
+          const response = JSON.parse(xhr.responseText);
+          
+          if (response.success) {
+            showFormMessage('Message sent — thank you!', 'success');
+            contactForm.reset();
+          } else {
+            showFormMessage('Failed to send message. Please try again later.', 'error');
+          }
+        } catch (e) {
+          if (xhr.responseText.includes('success') || xhr.responseText === '1') {
+            showFormMessage('Message sent — thank you!', 'success');
+            contactForm.reset();
+          } else {
+            showFormMessage('Failed to send message. Please try again later.', 'error');
+          }
+        }
+      } else {
+        showFormMessage('Server error. Please try again later.', 'error');
+      }
+    };
+    
+    xhr.onerror = function() {
+      submitBtn.textContent = originalText;
+      submitBtn.disabled = false;
+      showFormMessage('Network error. Please check your connection.', 'error');
+    };
+    xhr.send(formData);
+  });
+}
+function showFormMessage(message, type) {
+  if (!formMessage) return;
+  
+  formMessage.textContent = message;
+  formMessage.className = type;
+  formMessage.style.display = 'block';
+  
+  setTimeout(() => {
+    formMessage.style.display = 'none';
+  }, 5000);
+}
+window.history.replaceState({}, document.title, window.location.pathname);
 </script>
 
 </body>
